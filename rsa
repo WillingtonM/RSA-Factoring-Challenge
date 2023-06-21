@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+"""
+Factorize as many numbers as possible into a product of two smaller numbers.
+"""
+# library to get arguments
+import sys
+
+# func unpack number factorial
+def func():
+    """ func function to search file to convert number and format n=p*q """
+    try:
+        rev_file = sys.argv[1]
+        file_o = open(rev_file)
+        with file_o as file:
+            for rev_num in file:
+                rev_num = int(rev_num)
+                if rev_num % 2 == 0:
+                        print("{}={}*{}".format(rev_num, rev_num // 2, 2))
+                        continue
+                x = 3
+                while x < rev_num // 2:
+                    if rev_num % x == 0:
+                        print("{}={}*{}".format(rev_num, rev_num // x, x))
+                        break
+                    x = x + 2
+                if x == (rev_num // 2) + 1:
+                    print("{}={}*{}".format(rev_num, rev_num, 1))
+    except (IndexError):
+        pass
+
+# autostart
+func()
